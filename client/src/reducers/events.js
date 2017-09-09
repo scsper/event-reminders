@@ -60,3 +60,7 @@ const defaultState = {
 export default function event(state = defaultState, action) {
   return state;
 }
+
+export const selectors = {
+  getEvents: state => Object.keys(state).map(key => state[key])
+};

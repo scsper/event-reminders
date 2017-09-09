@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { selectors } from '../../reducers';
+
 import './event-list.css';
 
 function EventList({ events }) {
@@ -44,7 +46,7 @@ function formatDate(eventDate) {
 
 function mapStateToProps(state) {
   return {
-    events: Object.keys(state.events).map(key => state.events[key])
+    events: selectors.getEvents(state)
   };
 }
 
