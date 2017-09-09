@@ -1,8 +1,8 @@
 const defaultState = {
   1: {
     id: 1,
-    title: 'English Service',
-    date: new Date('9/30/2017'),
+    name: 'English Service',
+    date: new Date('9/30/2017').getTime(),
     roles: [
       {
         id: 1,
@@ -27,6 +27,31 @@ const defaultState = {
         name: 'Setup and Teardown',
         minimumSlots: 3,
         teamMembers: [6, 7]
+      }
+    ]
+  },
+  2: {
+    id: 1,
+    name: "Children's Ministry",
+    date: new Date('9/30/2017').getTime(),
+    roles: [
+      {
+        id: 5,
+        name: 'Special Needs',
+        minimumSlots: 3,
+        teamMembers: []
+      },
+      {
+        id: 6,
+        name: 'Elementry School',
+        minimumSlots: 2,
+        teamMembers: [8]
+      },
+      {
+        id: 7,
+        name: 'Junior High',
+        minimumSlots: 3,
+        teamMembers: []
       }
     ]
   }
