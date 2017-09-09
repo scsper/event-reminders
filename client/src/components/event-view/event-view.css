@@ -1,0 +1,8 @@
+.event-view {
+  display: flex;
+  margin-left: 30px;
+}
+
+.role-list {
+  list-style-type: none;
+}

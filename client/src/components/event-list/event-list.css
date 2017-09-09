@@ -1,0 +1,22 @@
+.event-list {
+  width: 300px;
+}
+.event-list-item {
+  list-style-type: none;
+  border-bottom: 1px solid black;
+}
+
+.event-title {
+  margin-bottom: 0;
+}
+
+.event-date {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.event-roles {
+  font-size: 16px;
+  line-height: 24px;
+}

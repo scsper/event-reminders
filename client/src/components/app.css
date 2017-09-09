@@ -1,0 +1,15 @@
+.app-header {
+  height: 60px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.app-name {
+  color: white;
+  margin: 0;
+}
+
+.app-body {
+  display: flex;
+}
