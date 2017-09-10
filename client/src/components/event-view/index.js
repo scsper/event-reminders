@@ -1,43 +1,11 @@
 import React from 'react';
+import Roles from './roles';
 import './event-view.css';
 
-export default function EventView() {
+export default function EventView({ eventId }) {
   return (
     <div className="event-view">
-      <div className="roles">
-        <h1>Roles</h1>
-        <ul className="role-list">
-          <li>
-            <h2>Worship Team</h2>
-            <ul>
-              <li>Jesse Du</li>
-              <li>Angie Paek</li>
-              <li>Scott Sperling</li>
-            </ul>
-          </li>
-          <li>
-            <h2>Announcements</h2>
-            <ul>
-              <li>Nikki Louie</li>
-            </ul>
-          </li>
-          <li>
-            <h2>Slides</h2>
-            <ul>
-              <li>Belinda Kuo</li>
-            </ul>
-          </li>
-          <li>
-            <h2>Setup and Teardown</h2>
-            <ul>
-              <li>Stacie Lum</li>
-              <li>Scott Jung</li>
-              <li>Empty slot</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
+      <Roles eventId={eventId} />
       <div className="team-members">
         <h1>Team Members</h1>
         <ul className="team-members-list">

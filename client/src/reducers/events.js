@@ -1,57 +1,57 @@
 const defaultState = {
-  1: {
-    id: 1,
+  '1': {
+    id: '1',
     name: 'English Service',
     date: new Date('9/30/2017').getTime(),
     roles: [
       {
-        id: 1,
+        id: '1',
         name: 'Worship Team',
         minimumSlots: 1,
-        teamMembers: [1, 2, 3]
+        teamMemberIds: ['1', '2', '3']
       },
       {
-        id: 2,
+        id: '2',
         name: 'Announcements',
         minimumSlots: 1,
-        teamMembers: [4]
+        teamMemberIds: ['4']
       },
       {
-        id: 3,
+        id: '3',
         name: 'Slides',
         minimumSlots: 1,
-        teamMembers: [5]
+        teamMemberIds: ['5']
       },
       {
-        id: 4,
+        id: '4',
         name: 'Setup and Teardown',
         minimumSlots: 3,
-        teamMembers: [6, 7]
+        teamMemberIds: ['6', '7']
       }
     ]
   },
-  2: {
-    id: 2,
+  '2': {
+    id: '2',
     name: "Children's Ministry",
     date: new Date('9/30/2017').getTime(),
     roles: [
       {
-        id: 5,
+        id: '5',
         name: 'Special Needs',
         minimumSlots: 3,
-        teamMembers: []
+        teamMemberIds: []
       },
       {
-        id: 6,
+        id: '6',
         name: 'Elementry School',
         minimumSlots: 2,
-        teamMembers: [8]
+        teamMemberIds: ['8']
       },
       {
-        id: 7,
+        id: '7',
         name: 'Junior High',
         minimumSlots: 3,
-        teamMembers: []
+        teamMemberIds: []
       }
     ]
   }
@@ -63,5 +63,6 @@ export default function events(state = defaultState, action) {
 
 export const selectors = {
   getAllIds: state => Object.keys(state),
-  get: (state, id) => state[id]
+  get: (state, id) => state[id],
+  getRoles: (state, id) => state[id].roles
 };

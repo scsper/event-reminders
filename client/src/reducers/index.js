@@ -14,5 +14,7 @@ export default combineReducers({
 export const selectors = {
   getEventIds: state => eventsSelectors.getAllIds(state.events),
   getEvent: (state, id) => eventsSelectors.get(state.events, id),
-  getSelectedEvent: state => selectedEventSelectors.get(state.selectedEvent)
+  getRoles: (state, id) => eventsSelectors.getRoles(state.events, id),
+  getSelectedEvent: state => selectedEventSelectors.get(state.selectedEvent),
+  getTeamMembers: (state, teamMemberIds) => teamMembersSelectors.getMembers(state.teamMembers, teamMemberIds)
 };

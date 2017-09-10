@@ -11,10 +11,11 @@ import './app.css';
 
 class App extends Component {
   static propTypes = {
-    selectedEvent: PropTypes.number.isRequired
+    selectedEvent: PropTypes.string.isRequired
   };
 
   render() {
+    const { selectedEvent } = this.props;
     return (
       <div className="app-container">
         <div className="app-header">
@@ -22,7 +23,7 @@ class App extends Component {
         </div>
         <div className="app-body">
           <EventList />
-          {this.props.selectedEvent !== -1 ? <EventView /> : null}
+          {selectedEvent !== '' ? <EventView eventId={selectedEvent} /> : null}
         </div>
       </div>
     );

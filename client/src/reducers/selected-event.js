@@ -1,6 +1,6 @@
 import { EVENT_SELECTED } from '../constants';
 
-export default function selectedEvent(state = -1, action) {
+export default function selectedEvent(state = '', action) {
   switch (action.type) {
     case EVENT_SELECTED:
       return action.eventId;
