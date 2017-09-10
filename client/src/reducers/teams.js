@@ -1,11 +1,11 @@
 const defaultState = {
   '1': {
-    id: 1,
+    id: '1',
     name: 'Kids Worship Team',
     teamMembers: ['7', '10']
   },
   '2': {
-    id: 2,
+    id: '2',
     name: 'Worship Team - Urim',
     teamMembers: ['1', '2', '3']
   },

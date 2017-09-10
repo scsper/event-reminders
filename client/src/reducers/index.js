@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 import events, { selectors as eventsSelectors } from './events';
-import teamMembers, { selectors as teamMembersSelectors } from './team-members';
-import teams, { selectors as teamsSelectors } from './teams';
 import selectedEvent, { selectors as selectedEventSelectors } from './selected-event';
+import teamsAndMembers, { selectors as teamsAndMembersSelectors } from './teams-and-members';
 
 export default combineReducers({
   events,
-  teamMembers,
-  teams,
+  teamsAndMembers,
   selectedEvent
 });
 
@@ -16,5 +14,5 @@ export const selectors = {
   getEvent: (state, id) => eventsSelectors.get(state.events, id),
   getRoles: (state, id) => eventsSelectors.getRoles(state.events, id),
   getSelectedEvent: state => selectedEventSelectors.get(state.selectedEvent),
-  getTeamMembers: (state, teamMemberIds) => teamMembersSelectors.getMembers(state.teamMembers, teamMemberIds)
+  getTeamMembers: (state, teamMemberIds) => teamsAndMembersSelectors.getMembers(state.teamsAndMembers, teamMemberIds)
 };

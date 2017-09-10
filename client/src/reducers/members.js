@@ -73,7 +73,7 @@ const defaultState = {
   }
 };
 
-export default function teamMembers(state = defaultState, action) {
+export default function members(state = defaultState, action) {
   return state;
 }
 
