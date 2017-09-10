@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import EventList from './event-list';
 import EventView from './event-view';
+
+import { selectors } from '../reducers';
+
 import './app.css';
 
 class App extends Component {
+  static propTypes = {
+    selectedEvent: PropTypes.number.isRequired
+  };
+
   render() {
     return (
       <div className="app-container">
@@ -12,11 +22,17 @@ class App extends Component {
         </div>
         <div className="app-body">
           <EventList />
-          <EventView />
+          {this.props.selectedEvent !== -1 ? <EventView /> : null}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    selectedEvent: selectors.getSelectedEvent(state)
+  };
+}
+
+export default connect(mapStateToProps)(App);

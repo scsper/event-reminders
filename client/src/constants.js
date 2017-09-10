@@ -1,0 +1,1 @@
+export const EVENT_SELECTED = 'EVENT_SELECTED';

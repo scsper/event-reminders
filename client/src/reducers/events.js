@@ -31,7 +31,7 @@ const defaultState = {
     ]
   },
   2: {
-    id: 1,
+    id: 2,
     name: "Children's Ministry",
     date: new Date('9/30/2017').getTime(),
     roles: [
@@ -57,10 +57,11 @@ const defaultState = {
   }
 };
 
-export default function event(state = defaultState, action) {
+export default function events(state = defaultState, action) {
   return state;
 }
 
 export const selectors = {
-  getEvents: state => Object.keys(state).map(key => state[key])
+  getAllIds: state => Object.keys(state),
+  get: (state, id) => state[id]
 };
