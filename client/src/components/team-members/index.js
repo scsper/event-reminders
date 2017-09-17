@@ -1,21 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectors } from '../../reducers';
+import Team from './team';
+import Member from './member';
 
-export default function TeamMembers() {
+function TeamMembers({ teamIds, nonTeamMemberIds }) {
   return (
     <div className="team-members">
       <h1>Team Members</h1>
       <ul className="team-members-list">
-        <li>Chantillia Ong</li>
-        <li>Philemon Chan</li>
-        <li>Ben Dang</li>
-        <li>
-          <h3>Worship Team B</h3>
-          <ul>
-            <li className="disabled">Scott Jung</li>
-            <li>Kiyoshi Lee</li>
-          </ul>
-        </li>
+        {teamIds.map(teamId => <Team key={teamId} id={teamId} />)}
+        {nonTeamMemberIds.map(memberId => <Member key={memberId} id={memberId} />)}
       </ul>
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    teamIds: selectors.getTeamIds(state),
+    nonTeamMemberIds: selectors.getNonTeamMemberIds(state)
+  };
+}
+
+export default connect(mapStateToProps)(TeamMembers);

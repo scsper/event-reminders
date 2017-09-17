@@ -78,5 +78,8 @@ export default function members(state = defaultState, action) {
 }
 
 export const selectors = {
-  getMembers: (state, teamMemberIds) => teamMemberIds.map(id => state[id])
+  getMembers: (state, teamMemberIds) => teamMemberIds.map(id => state[id]),
+  getAllMembers: state => state,
+  getAllMemberIds: state => Object.keys(state),
+  getMember: (state, id) => state[id]
 };

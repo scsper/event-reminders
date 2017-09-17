@@ -64,5 +64,18 @@ export default function events(state = defaultState, action) {
 export const selectors = {
   getAllIds: state => Object.keys(state),
   get: (state, id) => state[id],
-  getRoles: (state, id) => state[id].roles
+  getRoles: (state, id) => state[id].roles,
+  getTeamMemberIds: (state, id) => {
+    const eventIds = selectors.getAllIds(state);
+
+    return eventIds.reduce((teamMemberIds, eventId) => {
+      const roles = selectors.getRoles(state, eventId);
+
+      roles.forEach(role => {
+        teamMemberIds = teamMemberIds.concat(role.teamMemberIds);
+      });
+
+      return teamMemberIds;
+    }, []);
+  }
 };
