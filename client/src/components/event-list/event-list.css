@@ -1,7 +1,11 @@
 .event-list {
-  width: 300px;
+  width: 75%;
+  margin: 0px;
+  padding: 16px;
 }
 .event-list-item {
+  display: inline-block;
+  margin: 0px 16px;
   list-style-type: none;
   border-bottom: 1px solid black;
 }

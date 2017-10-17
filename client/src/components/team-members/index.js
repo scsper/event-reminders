@@ -4,6 +4,8 @@ import { selectors } from '../../reducers';
 import Team from './team';
 import Member from './member';
 
+import './team-members.css';
+
 function TeamMembers({ teamIds, nonTeamMemberIds }) {
   return (
     <div className="team-members">

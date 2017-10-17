@@ -81,5 +81,6 @@ export const selectors = {
   getMembers: (state, teamMemberIds) => teamMemberIds.map(id => state[id]),
   getAllMembers: state => state,
   getAllMemberIds: state => Object.keys(state),
+  getMemberByName: (state, name) => Object.keys(state).find((memberId) => state[memberId].name === name),
   getMember: (state, id) => state[id]
 };

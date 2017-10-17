@@ -1,1 +1,3 @@
 export const EVENT_SELECTED = 'EVENT_SELECTED';
+export const ADD_MEMBER_CLICKED = 'ADD_MEMBER_CLICKED';
+

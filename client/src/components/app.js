@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import EventList from './event-list';
 import EventView from './event-view';
+import TeamMembers from './team-members';
 
 import { selectors } from '../reducers';
 
@@ -22,8 +23,11 @@ class App extends Component {
           <h1 className="app-name">Event Reminders</h1>
         </div>
         <div className="app-body">
-          <EventList />
-          {selectedEvent !== '' ? <EventView eventId={selectedEvent} /> : null}
+          <div className="app-event-container">
+            <EventList />
+            {selectedEvent !== '' ? <EventView eventId={selectedEvent} /> : null}
+          </div>
+          <TeamMembers />
         </div>
       </div>
     );

@@ -23,8 +23,6 @@ class Event extends React.Component {
     return (
       <li className="event-list-item" onClick={this.onClick}>
         <h2 className="event-title">{event.name}</h2>
-        <p className="event-date">{formatDate(event.date)}</p>
-        <p className="event-roles">You have 16 roles left to fill</p>
       </li>
     );
   }
