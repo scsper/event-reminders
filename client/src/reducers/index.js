@@ -21,7 +21,7 @@ const eventSelectorsObj = {
   getEventIds: state => eventsSelectors.getAllIds(state.events),
   getEvent: (state, id) => eventsSelectors.get(state.events, id),
   getRoles: (state, id) => eventsSelectors.getRoles(state.events, id)
-}
+};
 
 const teamsAndMembersSelectorsObj = {
   getTeamMembers: (state, teamMemberIds) => teamsAndMembersSelectors.getMembers(state.teamsAndMembers, teamMemberIds),
@@ -31,8 +31,7 @@ const teamsAndMembersSelectorsObj = {
   getMember: (state, id) => teamsAndMembersSelectors.getMember(state.teamsAndMembers, id),
   getNonTeamMemberIds: state => teamsAndMembersSelectors.getNonTeamMemberIds(state.teamsAndMembers),
   getMemberByName: (state, name) => teamsAndMembersSelectors.getMemberByName(state.teamsAndMembers)
-}
-
+};
 
 export const selectors = {
   ...eventSelectorsObj,

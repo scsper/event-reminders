@@ -8,17 +8,17 @@ export function selectEvent(eventId) {
   };
 }
 
-export function addMember(name){
-    return function (dispatch, getState) {
-        const state = getState();
+export function addMember(name) {
+  return function(dispatch, getState) {
+    const state = getState();
 
-        const memberId = selectors.getMemberByName(state, name);
-        const selectedEventId = selectors.getSelectedEvent(state);
+    const memberId = selectors.getMemberByName(state, name);
+    const selectedEventId = selectors.getSelectedEvent(state);
 
-        return {
-            type: ADD_MEMBER_CLICKED,
-            memberId,
-            selectedEventId
-        }
-    }
+    return {
+      type: ADD_MEMBER_CLICKED,
+      memberId,
+      selectedEventId
+    };
+  };
 }
