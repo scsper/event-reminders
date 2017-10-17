@@ -64,10 +64,10 @@ const defaultState = {
 export default function events(state = defaultState, action) {
   switch (action.type) {
     case ADD_MEMBER_CLICKED:
-      const selectedEventId = selectedEventSelectors.get(selectedEvent('', {}));
-      //TODO : add a check to see if person is already here
-      const newMember = memberSelectors.getMember(members(), action.memberId);
+      // state[selectedEventId].roles
+      throw new Error('need to implement this functionality');
       const roles = [...state[selectedEventId].roles, newMember];
+
       const event = Object.assign({}, state[selectedEventId], { roles });
       return Object.assign({}, state, { [selectedEventId]: event });
     default:

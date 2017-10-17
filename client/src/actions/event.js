@@ -15,10 +15,10 @@ export function addMember(name) {
     const memberId = selectors.getMemberByName(state, name);
     const selectedEventId = selectors.getSelectedEvent(state);
 
-    return {
+    dispatch({
       type: ADD_MEMBER_CLICKED,
       memberId,
       selectedEventId
-    };
+    });
   };
 }

@@ -7,7 +7,7 @@ function Team({ team }) {
   return (
     <li>
       <h3>{team.name}</h3>
-      <ul>{team.memberIds.map(memberId => <Member id={memberId} />)}</ul>
+      <ul>{team.memberIds.map(memberId => <Member key={memberId} id={memberId} />)}</ul>
     </li>
   );
 }
