@@ -7,69 +7,89 @@ const defaultState = {
     id: '1',
     name: 'English Service',
     date: new Date('9/30/2017').getTime(),
-    roles: [
-      {
+    roles: {
+      '1': {
         id: '1',
         name: 'Worship Team',
         minimumSlots: 1,
         teamMemberIds: ['1', '2', '3']
       },
-      {
+      '2': {
         id: '2',
         name: 'Announcements',
         minimumSlots: 1,
         teamMemberIds: ['4']
       },
-      {
+      '3': {
         id: '3',
         name: 'Slides',
         minimumSlots: 1,
         teamMemberIds: ['5']
       },
-      {
+      '4': {
         id: '4',
         name: 'Setup and Teardown',
         minimumSlots: 3,
         teamMemberIds: ['6', '7']
       }
-    ]
+    }
   },
   '2': {
     id: '2',
     name: "Children's Ministry",
     date: new Date('9/30/2017').getTime(),
-    roles: [
-      {
+    roles: {
+      '5': {
         id: '5',
         name: 'Special Needs',
         minimumSlots: 3,
         teamMemberIds: []
       },
-      {
+      '6': {
         id: '6',
         name: 'Elementry School',
         minimumSlots: 2,
         teamMemberIds: ['8']
       },
-      {
+      '7': {
         id: '7',
         name: 'Junior High',
         minimumSlots: 3,
         teamMemberIds: []
       }
-    ]
+    }
   }
 };
 
 export default function events(state = defaultState, action) {
   switch (action.type) {
     case ADD_MEMBER_CLICKED:
-      // state[selectedEventId].roles
-      throw new Error('need to implement this functionality');
-      const roles = [...state[selectedEventId].roles, newMember];
+      const { memberId, roleId, selectedEventId } = action;
+      const event = state[selectedEventId];
+      const role = event.roles[roleId];
 
-      const event = Object.assign({}, state[selectedEventId], { roles });
-      return Object.assign({}, state, { [selectedEventId]: event });
+      const newTeamMemberIds = role.teamMemberIds.slice();
+      newTeamMemberIds.push(memberId);
+
+      const newRole = {
+        ...role,
+        teamMemberIds: newTeamMemberIds
+      };
+
+      const newRoles = {
+        ...event.roles,
+        [roleId]: newRole
+      };
+
+      const newEvent = {
+        ...event,
+        roles: newRoles
+      };
+
+      return {
+        ...state,
+        [selectedEventId]: newEvent
+      };
     default:
       return state;
   }
@@ -78,7 +98,7 @@ export default function events(state = defaultState, action) {
 export const selectors = {
   getAllIds: state => Object.keys(state),
   get: (state, id) => state[id],
-  getRoles: (state, id) => state[id].roles,
+  getRoles: (state, id) => Object.keys(state[id].roles).map(roleId => state[id].roles[roleId]),
   getTeamMemberIds: (state, id) => {
     const eventIds = selectors.getAllIds(state);
 

@@ -20,7 +20,7 @@ class Role extends React.Component {
   }
 
   handleSubmit(e) {
-    this.props.addMember(this.state.value);
+    this.props.addMember(this.state.value, this.props.role.id);
     this.setState({
       value: ''
     });

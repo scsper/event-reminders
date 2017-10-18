@@ -8,7 +8,7 @@ export function selectEvent(eventId) {
   };
 }
 
-export function addMember(name) {
+export function addMember(name, roleId) {
   return function(dispatch, getState) {
     const state = getState();
 
@@ -18,7 +18,8 @@ export function addMember(name) {
     dispatch({
       type: ADD_MEMBER_CLICKED,
       memberId,
-      selectedEventId
+      selectedEventId,
+      roleId
     });
   };
 }
