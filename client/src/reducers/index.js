@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import events, { selectors as eventsSelectors } from './events';
 import selectedEvent, { selectors as selectedEventSelectors } from './selected-event';
 import teamsAndMembers, { selectors as teamsAndMembersSelectors } from './teams-and-members';
+import roles, { selectors as rolesSelectors } from './roles';
 
 export default combineReducers({
   events,
   teamsAndMembers,
-  selectedEvent
+  selectedEvent,
+  roles
 });
 
 /**
@@ -19,7 +21,7 @@ export default combineReducers({
 const eventSelectorsObj = {
   getEventIds: state => eventsSelectors.getAllIds(state.events),
   getEvent: (state, id) => eventsSelectors.get(state.events, id),
-  getRoles: (state, id) => eventsSelectors.getRoles(state.events, id)
+  getRoleIds: (state, id) => eventsSelectors.getRoleIds(state.events, id)
 };
 
 const teamsAndMembersSelectorsObj = {
@@ -32,13 +34,36 @@ const teamsAndMembersSelectorsObj = {
   getMemberByName: (state, name) => teamsAndMembersSelectors.getMemberByName(state.teamsAndMembers, name)
 };
 
+const rolesSelectorsObj = {
+  getTeamMemberIds: (state, id) => rolesSelectors.getTeamMemberIds(state.roles, id),
+  getRole: (state, id) => rolesSelectors.getRole(state.roles, id)
+};
+
 export const selectors = {
   ...eventSelectorsObj,
   ...teamsAndMembersSelectorsObj,
   getSelectedEvent: state => selectedEventSelectors.get(state.selectedEvent),
   isMemberOccupied: (state, id) => {
-    const occupiedMemberIds = new Set(eventsSelectors.getTeamMemberIds(state.events));
+    const eventIds = eventSelectorsObj.getEventIds(state);
+
+    let roleIds = [];
+
+    eventIds.forEach(eventId => {
+      roleIds = roleIds.concat(eventSelectorsObj.getRoleIds(state, eventId));
+    });
+
+    const occupiedMemberIds = new Set();
+
+    roleIds.forEach(roleId => {
+      const teamMemberIds = rolesSelectorsObj.getTeamMemberIds(state, roleId);
+
+      teamMemberIds.forEach(teamMemberId => occupiedMemberIds.add(teamMemberId));
+    });
 
     return occupiedMemberIds.has(id);
+  },
+  getRoles: (state, eventId) => {
+    const roleIds = eventSelectorsObj.getRoleIds(state, eventId);
+    return roleIds.map(roleId => rolesSelectorsObj.getRole(state, roleId));
   }
 };
