@@ -1,6 +1,3 @@
-import selectedEvent, { selectors as selectedEventSelectors } from './selected-event';
-import members, { selectors as memberSelectors } from '../reducers/members';
-
 const defaultState = {
   '1': {
     id: '1',
