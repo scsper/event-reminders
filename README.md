@@ -21,5 +21,4 @@
 
 ### To-do
 
-* Make teams and members match case insensitively
 * Auto-complete for add members
