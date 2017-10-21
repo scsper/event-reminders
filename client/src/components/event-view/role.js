@@ -13,6 +13,7 @@ class Role extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleChange(e) {
@@ -28,8 +29,16 @@ class Role extends React.Component {
     });
   }
 
-  handleRemove(id){
+  handleRemove(id) {
     this.props.removeMember(id, this.props.role.id);
+  }
+
+  handleKeyDown(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+
+      this.handleSubmit(e);
+    }
   }
 
   render() {
@@ -42,11 +51,19 @@ class Role extends React.Component {
           {teamMembers.map(teamMember => (
             <li key={teamMember.id}>
               {teamMember.name}
-              <button onClick={this.handleRemove.bind(this, teamMember.id)} className="remove-member-from-role-button">x</button>
+              <button onClick={this.handleRemove.bind(this, teamMember.id)} className="remove-member-from-role-button">
+                x
+              </button>
             </li>
           ))}
         </ul>
-        <input type="text" placeholder="Add New Member" value={this.state.value} onChange={this.handleChange} />
+        <input
+          type="text"
+          placeholder="Add New Member"
+          value={this.state.value}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+        />
         <button onClick={this.handleSubmit}>Add</button>
       </li>
     );
