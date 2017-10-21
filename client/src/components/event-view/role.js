@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { addMember } from '../../actions/event';
 import { selectors } from '../../reducers';
+import './role.css';
 
 class Role extends React.Component {
   constructor(props) {
@@ -32,7 +33,14 @@ class Role extends React.Component {
     return (
       <li>
         <h2>{role.name}</h2>
-        <ul>{teamMembers.map(teamMember => <li key={teamMember.id}>{teamMember.name}</li>)}</ul>
+        <ul>
+          {teamMembers.map(teamMember => (
+            <li key={teamMember.id}>
+              {teamMember.name}
+              <button className="remove-member-from-role-button">x</button>
+            </li>
+          ))}
+        </ul>
         <input type="text" placeholder="Add New Member" value={this.state.value} onChange={this.handleChange} />
         <button onClick={this.handleSubmit}>Add</button>
       </li>
