@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addMember } from '../../actions/event';
+import { addMember, removeMember } from '../../actions/event';
 import { selectors } from '../../reducers';
 import './role.css';
 
@@ -12,6 +12,7 @@ class Role extends React.Component {
     this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleChange(e) {
@@ -27,6 +28,10 @@ class Role extends React.Component {
     });
   }
 
+  handleRemove(id){
+    this.props.removeMember(id, this.props.role.id);
+  }
+
   render() {
     const { role, teamMembers } = this.props;
 
@@ -37,7 +42,7 @@ class Role extends React.Component {
           {teamMembers.map(teamMember => (
             <li key={teamMember.id}>
               {teamMember.name}
-              <button className="remove-member-from-role-button">x</button>
+              <button onClick={this.handleRemove.bind(this, teamMember.id)} className="remove-member-from-role-button">x</button>
             </li>
           ))}
         </ul>
@@ -55,7 +60,7 @@ function mapStateToProps(state, { role }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addMember }, dispatch);
+  return bindActionCreators({ addMember, removeMember }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Role);

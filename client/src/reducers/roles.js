@@ -1,4 +1,4 @@
-import { ADD_MEMBER_CLICKED } from '../constants';
+import { ADD_MEMBER_CLICKED, REMOVE_MEMBER_CLICKED } from '../constants';
 
 const defaultState = {
   '1': {
@@ -61,6 +61,18 @@ export default function roles(state = defaultState, action) {
       return {
         ...state,
         [roleId]: newRole
+      };
+    case REMOVE_MEMBER_CLICKED:
+      const updatedTeamMemberIds = state[action.roleId].teamMemberIds.filter((id) => id !== action.memberId);
+
+      const updatedRole = {
+        ...state[action.roleId],
+        teamMemberIds: updatedTeamMemberIds
+      };
+
+      return {
+        ...state,
+        [action.roleId]: updatedRole
       };
     default:
       return state;
