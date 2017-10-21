@@ -48,10 +48,8 @@ const defaultState = {
 export default function roles(state = defaultState, action) {
   switch (action.type) {
     case ADD_MEMBER_CLICKED:
-      const { memberId, roleId } = action;
-
-      const newTeamMemberIds = state[roleId].teamMemberIds.slice();
-      newTeamMemberIds.push(memberId);
+      const { memberIds, roleId } = action;
+      const newTeamMemberIds = state[roleId].teamMemberIds.concat(memberIds);
 
       const newRole = {
         ...state[roleId],

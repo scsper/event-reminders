@@ -21,5 +21,11 @@ export const selectors = {
 
     return allMemberIds.filter(memberId => !teamMemberIds.has(memberId));
   }),
-  getMemberByName: (state, name) => membersSelectors.getMemberByName(state.members, name)
+  getMemberByName: (state, name) => membersSelectors.getMemberByName(state.members, name),
+  getTeamOrMemberByName: (state, name) => {
+    const teamMemberIds = teamsSelectors.getTeamMemberIdsByName(state.teams, name);
+    const member = membersSelectors.getMemberByName(state.members, name);
+
+    return teamMemberIds || member || [];
+  }
 };
