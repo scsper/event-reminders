@@ -81,6 +81,10 @@ export const selectors = {
   getMembers: (state, teamMemberIds) => teamMemberIds.map(id => state[id]),
   getAllMembers: state => state,
   getAllMemberIds: state => Object.keys(state),
-  getMemberByName: (state, name) => Object.keys(state).find((memberId) => state[memberId].name === name),
+  getMemberByName: (state, name) => {
+    const lowerCaseName = name.toLowerCase();
+
+    return Object.keys(state).find(memberId => state[memberId].name.toLowerCase() === lowerCaseName);
+  },
   getMember: (state, id) => state[id]
 };
