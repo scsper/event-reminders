@@ -31,7 +31,8 @@ const teamsAndMembersSelectorsObj = {
   getTeam: (state, id) => teamsAndMembersSelectors.getTeam(state.teamsAndMembers, id),
   getMember: (state, id) => teamsAndMembersSelectors.getMember(state.teamsAndMembers, id),
   getNonTeamMemberIds: state => teamsAndMembersSelectors.getNonTeamMemberIds(state.teamsAndMembers),
-  getMemberByName: (state, name) => teamsAndMembersSelectors.getMemberByName(state.teamsAndMembers, name)
+  getMemberByName: (state, name) => teamsAndMembersSelectors.getMemberByName(state.teamsAndMembers, name),
+  getTeamOrMemberByName: (state, name) => teamsAndMembersSelectors.getTeamOrMemberByName(state.teamsAndMembers, name)
 };
 
 const rolesSelectorsObj = {

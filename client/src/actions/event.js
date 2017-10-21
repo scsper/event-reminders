@@ -12,12 +12,12 @@ export function addMember(name, roleId) {
   return function(dispatch, getState) {
     const state = getState();
 
-    const memberId = selectors.getMemberByName(state, name);
+    const memberIds = selectors.getTeamOrMemberByName(state, name);
     const selectedEventId = selectors.getSelectedEvent(state);
 
     dispatch({
       type: ADD_MEMBER_CLICKED,
-      memberId,
+      memberIds,
       selectedEventId,
       roleId
     });

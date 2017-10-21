@@ -25,5 +25,14 @@ export const selectors = {
   getTeamIds: state => Object.keys(state),
   getTeam: (state, id) => state[id],
   getAllTeamMemberIds: state =>
-    Object.keys(state).reduce((teamMemberIds, id) => teamMemberIds.concat(state[id].memberIds), [])
+    Object.keys(state).reduce((teamMemberIds, id) => teamMemberIds.concat(state[id].memberIds), []),
+  getTeamMemberIdsByName: (state, name) => {
+    const teamId = Object.keys(state).find(id => state[id].name === name);
+
+    if (!teamId) {
+      return undefined;
+    }
+
+    return state[teamId].memberIds;
+  }
 };
