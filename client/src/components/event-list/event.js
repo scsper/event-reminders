@@ -22,7 +22,7 @@ class Event extends React.Component {
     const { event } = this.props;
     return (
       <li className="event-list-item" onClick={this.onClick}>
-        <h2 className="event-title">{event.name}</h2>
+        <button className="event-title">{event.name}</button>
       </li>
     );
   }

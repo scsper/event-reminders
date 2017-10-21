@@ -36,18 +36,20 @@ class Role extends React.Component {
     const { role, teamMembers } = this.props;
 
     return (
-      <li>
-        <h2>{role.name}</h2>
-        <ul>
+      <li className="role">
+        <h2 className="role-name">{role.name}</h2>
+        <ul className="member-list">
           {teamMembers.map(teamMember => (
             <li key={teamMember.id}>
-              {teamMember.name}
+              <p className="member-name">{teamMember.name}</p>
               <button onClick={this.handleRemove.bind(this, teamMember.id)} className="remove-member-from-role-button">x</button>
             </li>
           ))}
         </ul>
-        <input type="text" placeholder="Add New Member" value={this.state.value} onChange={this.handleChange} />
-        <button onClick={this.handleSubmit}>Add</button>
+        <div className="add-new-member-section">
+          <input className="add-new-member-input" type="text" placeholder="Add New Member" value={this.state.value} onChange={this.handleChange} />
+          <button onClick={this.handleSubmit}>Add</button>
+        </div>
       </li>
     );
   }

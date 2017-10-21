@@ -8,11 +8,13 @@
   display: inline-block;
   margin: 0px 16px;
   list-style-type: none;
-  border-bottom: 1px solid black;
 }
 
 .event-title {
   margin-bottom: 0;
+  background: none;
+  border: 1px solid lightgrey;
+  padding: 1em;
 }
 
 .event-date {
