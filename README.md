@@ -19,6 +19,12 @@
 
 1. `brew install yarn --without-node` (install [yarn with homebrew](https://yarnpkg.com/lang/en/docs/install/))
 
+#### Setup
+
+1. Go inside client/
+2. `yarn install`
+3. `yarn start`
+
 ### To-do
 
 * Auto-complete for add members
